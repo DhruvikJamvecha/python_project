@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Registration Page</title>
+        {% load static %}
+        <link href="{% static 'Registration.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="main_div">
+            <h2 class="heading">
+                Registration Form
+            </h2>
+            <form method="POST" action="/updateprofile/{{ user.id }}">
+            {% csrf_token %}
+            <input type="text" placeholder="Id" name="id" class="textbox" value="{{ user.id }}"><br><br>
+            <input type="text" placeholder="Enter Name" name="name" class="textbox" value="{{ user.name }}"><br><br>
+            <input type="text" placeholder="Enter Your Phone number" name="mobile" maxlength="10" class="textbox" required="mobile" value="{{ user.mobile }}"><br><br>
+            <input type="email" placeholder="Enter Your Email" name="email" class="textbox" required="email" value="{{ user.email }}"><br><br>
+            <input type="password" placeholder="Enter Your Password" name="password" class="textbox" required="password" value="{{ user.password }}"><br><br>   
+            <input type="submit" value="Edit" name="submit" class="textbox"><br><br>
+        </form>
+        </div>
+    </body>
+</html>

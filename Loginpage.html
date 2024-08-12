@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Login Page</title>
+        {% load static %}
+        <link href="{% static 'Loginpage.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <form method="POST" action="{% url 'logincheck' %}" name="MyLoginForm"> 
+            {% csrf_token %}
+            <div class="main_div">
+                <div class="sub_div">
+                    {% if messages %}
+                    <p>
+                        {% for message in messages %}
+                        <p {% if message.tags %} {% endif %}>{{ message }}</p>
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                    <h2 class="div_heading">Login Here</h2>
+                    <input type="text" placeholder="Enter Mobile Number" name="mobile" class="form_text" required><br><br>
+                    <input type="password" placeholder="Enter Password" name="password" class="form_text" required><br><br>
+                    <input type="submit" value="Login" name="submit" class="form_text"><br><br>
+                    <a href="/Registration" class="signup_link">Sign In</a>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Cafe Management</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'Viewuser.css'%}" type="text/css">
+    </head>
+    <body>
+        <h1 class="header">Cafe Management</h1>
+        
+        <a href="/">Home</a>
+        <a href='/Contact'>Contact Us</a>
+        <a href='/About'>About Us</a>
+        <a href="/Registration">Registration Form</a>
+        <a href="/Loginpage">Login</a>
+        <a href="/Viewuser">View User</a>
+        <a href="/Logout">Logout</a>
+
+        <h2>This is View Users Page...</h2>
+        <center>
+        <table border="2"> 
+            <tr>
+                <th>UserID</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for us in userdata %}
+            <tr>
+                <td>{{ us.id }}</td>
+                <td>{{ us.name }}</td>
+                <td>{{ us.mobile }}</td>
+                <td>{{ us.email }}</td>
+                <td>{{ us.password }}</td>
+                <td><a href="/editprofile/{{ us.id }}">Edit</a></td> 
+                <td><a href="/deleteprofile/{{ us.id }}">Delete</a></td>
+                <!-- /editprofile/{{ us.uid }} -->
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+    </body>
+</html>
